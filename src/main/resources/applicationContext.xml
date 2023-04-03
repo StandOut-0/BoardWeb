@@ -5,12 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-	<!-- <context:component-scan base-package="com.springbook.biz" />
+	<context:component-scan base-package="com.springbook.biz" />
 	<bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl">
 		<property name="userDAO" ref="userDAO" />
 	</bean>
-	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO" /> -->
-	
-	<context:component-scan base-package="com.springbook.biz"/>	
-	
+	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO" />
 </beans>
