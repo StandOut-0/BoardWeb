@@ -11,43 +11,16 @@
 	<context:component-scan
 		base-package="com.springbook.biz"></context:component-scan>
 
-
-	<!-- aop 용어 -->
-	<!-- 조인포인트: 클라이언트가 호출하는 모든 비즈니스 메소드, 포인트컷대상, 포인트컷 후보 -->
-	<!--포인트컷: 필터링된 조인포인트, 원하는 특정 메소드에서만 공통기능 수행 -->
-	<!-- 어드바이스: 동작지점, before, after, after-returning(리턴하는 시점), after-throwing(예외발생시점), around(실행전과 실행후 모두) -->
-
-	<!-- namepace에 aop기능을 추가해 약한 결합의 로깅을 구현해보자. -->
-	<!-- <bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean> -->
-	<!-- <bean id="log" class="com.springbook.biz.common.LogAdvice"></bean> -->
-	<bean id="log" class="com.springbook.biz.common.BeforeAdvice"></bean>
-	<!-- <aop:config> 루트 엘리먼트, 여러개 생성가능 -->
+	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"/>
+		
 	<aop:config>
-	
-	<!-- execution(리턴타입, 패키지경로, 클래스명, 메소드명매개변수) execution(* com.springbook.biz..*Impl.*(..)) -->
-		<aop:pointcut
-			expression="execution(* com.springbook.biz..*Impl.*(..))"
-			id="allPointcut" />
-		<aop:pointcut
-			expression="execution(* com.springbook.biz..*Impl.get.*(..))"
-			id="getPointcut" />
-		<aop:aspect ref="log">
-			<!-- <aop:before method="printLogging" pointcut-ref="allPointcut" /> -->
-			<!-- <aop:before method="printLog" pointcut-ref="allPointcut" /> -->
-			<aop:before method="beforeLog" pointcut-ref="allPointcut" />
-			<!-- 포인트컷을 지정하면, -->
-			<!--[공통 로그-Log4j] 비즈니스 로직 수행 전 동작, [공통 로그-Log4j] 비즈니스 로직 수행 전 동작 등과 같은 
-				로그를 제외하고 com.springbook.biz..*Impl.get.*(..))의 조건에 해당하는 getBoardList()의 로그만 
-				출력하는것을 확인 할 수 있다. -->
-			<!-- <aop:before method="printLogging" pointcut-ref="getPointcut" /> -->
+		<aop:pointcut id="getPointcut"
+			expression="execution(* com.springbook.biz..*Impl.get*(..))" />
+		
+		<aop:aspect ref="afterReturning">
+			<aop:after-returning pointcut-ref="getPointcut" method="afterLog" returning="returnObj" />
 		</aop:aspect>
+		
 	</aop:config>
-
-
-
-
-	 <bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl"> 
-		<property name="userDAO" ref="userDAO" /> </bean> <bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO" 
-		/> 
 
 </beans>
