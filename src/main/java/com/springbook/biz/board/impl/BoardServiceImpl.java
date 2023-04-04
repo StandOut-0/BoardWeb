@@ -11,7 +11,7 @@ import com.springbook.biz.board.BoardVO;
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
 	@Autowired
-	private BoardDAO boardDAO;
+	private BoardDAOSpring boardDAO;
 
 	public void insertBoard(BoardVO vo) {
 		//Around의 실행을 확인해보기위해 예외발생 코드를 주석으로 변경했다.

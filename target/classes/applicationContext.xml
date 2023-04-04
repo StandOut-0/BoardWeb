@@ -10,5 +10,27 @@
 	<context:component-scan base-package="com.springbook.biz" />
 
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+	<!-- DataSource 설정 -->
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:tcp://localhost/~/test" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean> -->
+	
+	
+		<!-- DataSource 설정 -->
+		<!-- database.properties파일로 계정 정보를 빼서 관리할 수 있다. -->
+	<context:property-placeholder location="classpath:config/database.properties" />
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
 	
 </beans>
