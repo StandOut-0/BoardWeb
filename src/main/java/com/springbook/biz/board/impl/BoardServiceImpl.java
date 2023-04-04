@@ -14,11 +14,11 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAOSpring boardDAO;
 
 	public void insertBoard(BoardVO vo) {
-		//Around의 실행을 확인해보기위해 예외발생 코드를 주석으로 변경했다.
 //		if (vo.getSeq() == 0) {
 //			throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.");
 //		}
-		boardDAO.insertBoard(vo);
+		boardDAO.insertBoard(vo); // 100번 글 등록 성공
+		boardDAO.insertBoard(vo); // Exception 발생
 	}
 
 	public void updateBoard(BoardVO vo) {

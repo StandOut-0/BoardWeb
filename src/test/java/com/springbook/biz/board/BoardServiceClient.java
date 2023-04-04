@@ -18,7 +18,9 @@ public class BoardServiceClient {
 		vo.setTitle("임시 제목");
 		vo.setWriter("홍길동");
 		vo.setContent("임시 내용..............");
-		boardService.insertBoard(vo);
+		
+		//트랜잭션 설정 테스트를 위해 주서거리, 추후 되돌린다.
+//		boardService.insertBoard(vo);
 
 		// 4. 글 목록 검색 기능 테스트
 		List<BoardVO> boardList = boardService.getBoardList(vo);
