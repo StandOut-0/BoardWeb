@@ -25,8 +25,15 @@
 		<h1>글 상세</h1>
 		<a href="logout_proc.jsp">Log-out</a>
 		<hr>
+		
+		<!-- submit할경우, updateBoard_proc.jsp로  post형태로 이동한다. -->
 		<form action="updateBoard_proc.jsp" method="post">
+			
+			<!-- 글을 수정하려면 글의 제목/내용/게시글번호를 알아야함으로 
+			form 태그 밑에 게시글 번호도 같이 전달될 수있도록 한다. -->
 			<input name="seq" type="hidden" value="<%=board.getSeq()%>" />
+			
+			
 			<table border="1" cellpadding="0" cellspacing="0">
 				<tr>
 					<td bgcolor="orange" width="70">제목</td>
@@ -51,7 +58,8 @@
 					<td align="left"><%=board.getCnt()%></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit"
+					<td colspan="2" align="center">
+					<input type="submit"
 						value="글 수정" /></td>
 				</tr>
 			</table>
