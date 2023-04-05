@@ -66,7 +66,10 @@
 		</form>
 		<hr>
 		<a href="insertBoard.jsp">글등록</a>&nbsp;&nbsp;&nbsp; 
+		
+		<!-- getSeq 글번호를 가지고 deleteBoard_proc.jsp로 넘어간다.  -->
 		<a href="deleteBoard_proc.jsp?seq=<%=board.getSeq()%>">글삭제</a>&nbsp;&nbsp;&nbsp;
+		
 		<a href="getBoardList.jsp">글목록</a>
 	</center>
 </body>
