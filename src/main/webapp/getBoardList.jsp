@@ -52,6 +52,7 @@
 			%>
 			<tr>
 				<td><%=board.getSeq()%></td>
+				<!-- 글제목 클릭시 getBoard.jsp로 글번호와 함께 이동한다. -->
 				<td align="left"><a href="getBoard.jsp?seq=<%=board.getSeq()%>">
 						<%=board.getTitle()%></a></td>
 				<td><%=board.getWriter()%></td>
