@@ -63,6 +63,7 @@
 				}
 			%>
 		</table>
+		<!-- 단순한 페이지 이동 -->
 		<br> <a href="insertBoard.jsp">새글 등록</a>
 	</center>
 </body>
