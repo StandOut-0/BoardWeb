@@ -1,15 +1,13 @@
 <%@page import="java.util.List"%>
-<%@page import="com.springbook.biz.board.impl.BoardDAO"%>
 <%@page import="com.springbook.biz.board.BoardVO"%>
 <%@page contentType="text/html; charset=EUC-KR"%>
 
 <%
 	// 1. 게시판 정보가져오기
-	BoardVO vo = new BoardVO();
-	BoardDAO boardDAO = new BoardDAO();
-	List<BoardVO> boardList = boardDAO.getBoardList(vo);
-
-	// 3. 응답 화면 구성
+/* 	BoardVO vo = new BoardVO();
+	BoardDAO boardDAO = new BoardDAO();*/
+	List<BoardVO> boardList = (List) session.getAttribute("boardList");
+ 
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -23,10 +21,10 @@
 	<center>
 		<h1>글 목록</h1>
 		<h3>
-			테스트님 환영합니다...<a href="logout_proc.jsp">Log-out</a>
+			테스트님 환영합니다...<a href="logout.do">Log-out</a>
 		</h3>
 		<!-- 검색 시작 -->
-		<form action="getBoardList.jsp" method="post">
+		<form action="getBoardList.do" method="post">
 			<table border="1" cellpadding="0" cellspacing="0" width="700">
 				<tr>
 					<td align="right"><select name="searchCondition">
@@ -53,7 +51,7 @@
 			<tr>
 				<td><%=board.getSeq()%></td>
 				<!-- 글제목 클릭시 getBoard.jsp로 글번호와 함께 이동한다. -->
-				<td align="left"><a href="getBoard.jsp?seq=<%=board.getSeq()%>">
+				<td align="left"><a href="getBoard.do?seq=<%=board.getSeq()%>">
 						<%=board.getTitle()%></a></td>
 				<td><%=board.getWriter()%></td>
 				<td><%=board.getRegDate()%></td>

@@ -3,13 +3,16 @@
 <%@page contentType="text/html; charset=EUC-KR"%>
 <%
 	// 1. 리스트 페이지에서 넘겨받은 글번호를 get
-	String seq = request.getParameter("seq");
+/* 	String seq = request.getParameter("seq");
 
 	// 2. DB 연동
 	BoardVO vo = new BoardVO();
 	vo.setSeq(Integer.parseInt(seq));
 	BoardDAO boardDAO = new BoardDAO();
-	BoardVO board = boardDAO.getBoard(vo);
+	BoardVO board = boardDAO.getBoard(vo); */
+	
+	BoardVO board = (BoardVO) session.getAttribute("board");
+	
 
 %>
 
@@ -27,7 +30,7 @@
 		<hr>
 		
 		<!-- submit할경우, updateBoard_proc.jsp로  post형태로 이동한다. -->
-		<form action="updateBoard_proc.jsp" method="post">
+		<form action="updateBoard.do" method="post">
 			
 			<!-- 글을 수정하려면 글의 제목/내용/게시글번호를 알아야함으로 
 			form 태그 밑에 게시글 번호도 같이 전달될 수있도록 한다. -->
@@ -65,12 +68,12 @@
 			</table>
 		</form>
 		<hr>
-		<a href="insertBoard.jsp">글등록</a>&nbsp;&nbsp;&nbsp; 
+		<a href="insertBoard.do">글등록</a>&nbsp;&nbsp;&nbsp; 
 		
 		<!-- getSeq 글번호를 가지고 deleteBoard_proc.jsp로 넘어간다.  -->
-		<a href="deleteBoard_proc.jsp?seq=<%=board.getSeq()%>">글삭제</a>&nbsp;&nbsp;&nbsp;
+		<a href="deleteBoard.do?seq=<%=board.getSeq()%>">글삭제</a>&nbsp;&nbsp;&nbsp;
 		
-		<a href="getBoardList.jsp">글목록</a>
+		<a href="getBoardList.do">글목록</a>
 	</center>
 </body>
 </html>

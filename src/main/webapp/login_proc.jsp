@@ -3,7 +3,7 @@
 <%@page contentType="text/html; charset=EUC-KR"%>
 
 <%
-	// 1. 사용자 입력 정보를 가져와 변수에 저장
+/* 	// 1. 사용자 입력 정보를 가져와 변수에 저장
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
 	
@@ -21,5 +21,5 @@
 	} else {
 		response.sendRedirect("login.jsp");
 	}
-	
+	 */
 %>

@@ -3,7 +3,7 @@
 <%@page contentType="text/html; charset=EUC-KR"%>
 
 <%
-	// 1. 사용자 입력 정보 추출
+	/* // 1. 사용자 입력 정보 추출
 	request.setCharacterEncoding("EUC-KR");
 	String title = request.getParameter("title");
 	String content = request.getParameter("content");
@@ -18,5 +18,5 @@
 	boardDAO.updateBoard(vo);
 
 	// 3. 완료후 getBoardList로 이동.
-	response.sendRedirect("getBoardList.jsp");
+	response.sendRedirect("getBoardList.jsp"); */
 %>
