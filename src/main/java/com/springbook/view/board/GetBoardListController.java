@@ -7,10 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
 
-@Controller
+//@Controller
 public class GetBoardListController{
 
-	@RequestMapping("/getBoardList.do")
+//	@RequestMapping("/getBoardList.do")
 	public ModelAndView getBoardList(BoardVO vo, BoardDAO boardDAO, ModelAndView mav) {
 		mav.addObject("boardList", boardDAO.getBoardList(vo)); 	// Model 정보 저장
 		mav.setViewName("getBoardList.jsp"); 	// View 정보 저장

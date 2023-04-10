@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
 
-@Controller
+//@Controller
 public class UpdateBoardController {
 
-	@RequestMapping("/updateBoard.do")
+//	@RequestMapping("/updateBoard.do")
 	public String updateBoard(BoardVO vo, BoardDAO boardDAO) {
 		boardDAO.updateBoard(vo);
 		return "getBoardList.do";

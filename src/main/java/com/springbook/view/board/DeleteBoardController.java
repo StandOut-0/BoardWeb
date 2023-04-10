@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
 
-@Controller
+//@Controller
 public class DeleteBoardController  {
 
-	@RequestMapping("/deleteBoard.do")
+//	@RequestMapping("/deleteBoard.do")
 	public String deleteBoard(BoardVO vo, BoardDAO boardDAO) {
 		boardDAO.deleteBoard(vo);
 		return "getBoardList.do";
