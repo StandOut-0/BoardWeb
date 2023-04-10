@@ -4,14 +4,25 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-	<!-- <servlet>
-		이 설정에서 의미없는 설정임으로 제거
-		<description></description> <display-name>action</display-name>
-		<servlet-name>action</servlet-name>
-		<servlet-class>com.springbook.view.controller.DispatcherServlet</servlet-class>
-	</servlet> -->
-	
-	<!-- spring MVC 적용에서가장 먼저 해애할 일, DispatcherServlet class를 스프링 프레임 워크에서 제공하는 DispatcherServlet으로 변경하기 -->
+	<filter>
+		<filter-name>characterEncoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>EUC-KR</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>characterEncoding</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<!-- spring MVC 적용에서가장 먼저 해애할 일, DispatcherServlet class를 스프링 프레임 워크에서 제공하는 
+		DispatcherServlet으로 변경하기 
+		스프링 MVC 구성 요소중 DispatcherServlet 클래스가 유일한 서블릿.
+		반드시 HandlerMapping, Controller, ViewResolver 객체들과 상호 작용해야한다.
+		-->
 	<servlet>
 		<servlet-name>action</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

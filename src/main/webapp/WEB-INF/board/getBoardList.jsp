@@ -7,12 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>글 목록</title>
-
-<!-- Controller 로직은 사용자 입력정보 추출, DB연동처리, 화면 내비게이션과 같은 자바코드를 의미하기 때문에 
-JSP 파일에 남아잇는 자바코드는 Controller 로직이 아니다.
-이 자바 코드를 JSP파일에서 제거하고싶다면, 
-JSP에서 제공하는 EL(Expression Language)와 JSTL(JSP Standard Tag Libray)를 이용한다. -->
-
 </head>
 <body>
 	<center>
