@@ -18,6 +18,7 @@
 				</tr>
 				<tr>
 					<td bgcolor="orange">비밀번호</td>
+					<!-- 스프링 컨테이너가 생성하는 Command 객체의 이름을 클래스 이름의 첫글자를 소문자로 변경한 이름이 자동으로 설정된다. -->
 					<td><input type="password" name="password" value="${userVO.password }"/></td>
 				</tr>
 				<tr>

@@ -11,8 +11,8 @@
 <body>
 	<center>
 		<h1>글 목록</h1>
-		<h3>
-			테스트님 환영합니다...<a href="logout.do">Log-out</a>
+		<h3>${userName }님!
+			게시판에 오신걸 환영합니다...<a href="logout.do">Log-out</a>
 		</h3>
 		<!-- 검색 시작 -->
 		<form action="getBoardList.jsp" method="post">
