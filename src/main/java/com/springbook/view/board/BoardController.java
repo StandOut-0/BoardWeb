@@ -1,7 +1,11 @@
 package com.springbook.view.board;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,6 +42,17 @@ public class BoardController {
 		modal.addAttribute("board", boardDAO.getBoard(vo)); // Model 정보 저장
 		return "getBoard.jsp";
 	}
+	
+	
+	//getBoardList가 실행되기전에 먼저실행된다.
+	@ModelAttribute("conditionMap")
+	public Map<String, String> SearchCondition(){
+		Map<String, String> conditionMap = new HashMap <String, String>();
+		conditionMap.put("제목","TITLE");
+		conditionMap.put("내용","CONTENT");
+		return conditionMap;
+	}
+	
 
 	// 글 목록 검색
 	//@RequestParam 
@@ -51,11 +66,13 @@ public class BoardController {
 			BoardVO vo, BoardDAO boardDAO, Model modal) {
 		modal.addAttribute("boardList", boardDAO.getBoardList(vo)); // Model 정보 저장
 		
-		String condition = vo.getSearchCondition();
-		String keyword = vo.getSearchKeyword();
+//		String condition = vo.getSearchCondition();
+//		String keyword = vo.getSearchKeyword();
+//		System.out.println("검색조건"+condition);
+//		System.out.println("검색단어"+keyword);
 		
-		System.out.println("검색조건"+condition);
-		System.out.println("검색단어"+keyword);
+		
+		
 		return "getBoardList.jsp";
 	}
 }
