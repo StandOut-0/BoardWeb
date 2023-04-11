@@ -3,6 +3,7 @@ package com.springbook.view.board;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springbook.biz.board.BoardVO;
@@ -39,9 +40,22 @@ public class BoardController {
 	}
 
 	// 글 목록 검색
+	//@RequestParam 
+	// value 화면에서 전달될 파라미터 이름
+	// defaultValue 전달될 파라미터 정보가 없을때 설정할 기본값
+	// required 생략여부
 	@RequestMapping("/getBoardList.do")
-	public String getBoardList(BoardVO vo, BoardDAO boardDAO, Model modal) {
+	public String getBoardList(
+//			@RequestParam(value="searchCondition", defaultValue ="TITLE", required = false ) String condition,
+//			@RequestParam(value="searchKeyword", defaultValue ="", required = false ) String keyword,
+			BoardVO vo, BoardDAO boardDAO, Model modal) {
 		modal.addAttribute("boardList", boardDAO.getBoardList(vo)); // Model 정보 저장
+		
+		String condition = vo.getSearchCondition();
+		String keyword = vo.getSearchKeyword();
+		
+		System.out.println("검색조건"+condition);
+		System.out.println("검색단어"+keyword);
 		return "getBoardList.jsp";
 	}
 }
