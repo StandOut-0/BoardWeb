@@ -17,6 +17,16 @@
 		<filter-name>characterEncoding</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
 
 	<!-- spring MVC 적용에서가장 먼저 해애할 일, DispatcherServlet class를 스프링 프레임 워크에서 제공하는 
 		DispatcherServlet으로 변경하기 
