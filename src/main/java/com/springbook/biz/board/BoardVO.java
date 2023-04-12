@@ -2,6 +2,8 @@ package com.springbook.biz.board;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 //VO(Value Object)
 public class BoardVO {
 	private int seq;
@@ -10,9 +12,12 @@ public class BoardVO {
 	private String content;
 	private Date regDate;
 	private int cnt;
+
+	private MultipartFile uploadFile;
 	
 	private String searchCondition;
 	private String searchKeyword;
+	
 
 	public int getSeq() {
 		return seq;
@@ -76,6 +81,15 @@ public class BoardVO {
 
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	
+
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.springbook.view.board;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
@@ -24,7 +27,16 @@ public class BoardController {
 	
 	// 글 등록
 	@RequestMapping(value = "/insertBoard.do")
-	public String insertBoard(BoardVO vo) {
+	public String insertBoard(BoardVO vo) throws IOException{
+		// 파일 업로드 처리
+		// MultipartFile 객체가 제공하는 세개의 메소드
+		//getUploadFile, getOriginalFilename, transferTo만 이용하면 간단하게 파일업로드를 처리할 수 있다.
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()){
+			String fileName = uploadFile.getOriginalFilename();
+			uploadFile.transferTo(new File("D:/" + fileName));
+		}
+		
 		boardService.insertBoard(vo);
 		return "getBoardList.do";
 	}
