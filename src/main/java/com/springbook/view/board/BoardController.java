@@ -60,10 +60,13 @@ public class BoardController {
 	}
 
 	// 글 목록 검색
-	@RequestMapping("/getBoardList.do")
-	public String getBoardList(BoardVO vo, Model model) {		
-		// Model 정보 저장
-		model.addAttribute("boardList", boardService.getBoardList(vo));																
-		return "getBoardList.jsp"; // View 이름 리턴
-	}
+		@RequestMapping("/getBoardList.do")
+		public String getBoardList(BoardVO vo, Model model) {
+			// Null Check
+			if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
+			if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+			// Model 정보 저장
+			model.addAttribute("boardList", boardService.getBoardList(vo));																
+			return "getBoardList.jsp"; // View 이름 리턴
+		}
 }

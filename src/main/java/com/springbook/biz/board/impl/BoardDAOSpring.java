@@ -27,13 +27,15 @@ public class BoardDAOSpring {
 
 	// SQL 명령어들
 	//트랜잭션 설정 테스트용, 추후 제거한다.
-	private final String BOARD_INSERT = "insert into board(seq, title, writer, content) values(?, ?, ?, ?)";
+	//private final String BOARD_INSERT = "insert into board(seq, title, writer, content) values(?, ?, ?, ?)";
 	
-	//	private final String BOARD_INSERT = "insert into board(seq, title, writer, content) values((select nvl(max(seq), 0)+1 from board),?,?,?)";
+	private final String BOARD_INSERT = "insert into board(seq, title, writer, content) values((select nvl(max(seq), 0)+1 from board),?,?,?)";
 	private final String BOARD_UPDATE = "update board set title=?, content=? where seq=?";
 	private final String BOARD_DELETE = "delete board where seq=?";
 	private final String BOARD_GET = "select * from board where seq=?";
 	private final String BOARD_LIST = "select * from board order by seq desc";
+	private final String BOARD_LIST_T = "select * from board where title like '%'||?||'%' order by seq desc";
+	private final String BOARD_LIST_C = "select * from board where content like '%'||?||'%' order by seq desc";
 
 	// 데이터베이스연결 두번째 방법, JdbcTemplate 클래스 의존성 주입
 	// 기존에 연결했던 getJdbcTemplate()를 jdbcTemplate로 바꾸면 완성!
@@ -74,6 +76,12 @@ public class BoardDAOSpring {
 	// 글 목록 조회
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		System.out.println("===> Spring JDBC로 getBoardList() 기능 처리");
-		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
+		Object[] args = { vo.getSearchKeyword() };
+		if (vo.getSearchCondition().equals("TITLE")) {			
+			return jdbcTemplate.query(BOARD_LIST_T, args, new BoardRowMapper());
+		} else if (vo.getSearchCondition().equals("CONTENT")) {
+			return jdbcTemplate.query(BOARD_LIST_C, args, new BoardRowMapper());
+		}
+		return null;
 	}
 }
