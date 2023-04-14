@@ -6,7 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-
+		
 	<!-- 스프링은 애너테이션 기반 설정을 제공함으로써 과도한 xml 설정으로 인한 문제를 해결한다. MVC도 스프링 설정 파일에 
 		HandlerMapping, Controller, ViewResolver 같은 여러 클래스를 등록해함으로 애너테이션 설정을 최대한 
 		활용하여 xml 설정을 최소화한다. -->
@@ -26,5 +26,33 @@
 	
 	<!-- MVC네임스페이스 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	
+	<!-- 다국어 설정 -->
+	<!-- MessageSource 등록 -->
+	<!-- ResourceBundleMessageSource, 파일이름이 messageSource로 고정되어있다.  -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message.messageSource</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- LocaleResolver 등록 -->
+	<!-- 스프링이 LocaleResolver를 통해 클라이언트의 Local 정보를 추출하고 이 정보에 해당하는 언어의 메세지를 적용한다. -->
+	<!-- localeResolver라는 이름으로 고정해 사용해야한다. -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+	
+	
+	<!-- LocaleChangeInterceptor 등록 -->
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang" />
+		</bean>
+	</mvc:interceptors>
+	
 	
 </beans>
