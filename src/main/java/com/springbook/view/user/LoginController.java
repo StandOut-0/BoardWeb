@@ -17,7 +17,7 @@ public class LoginController {
 		System.out.println("로그인 화면으로 이동...");
 		vo.setId("TEST");
 		vo.setPassword("TEST123");
-		return "login.jsp";
+		return "login";
 	}
 	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
@@ -30,9 +30,9 @@ public class LoginController {
 		UserVO user = userDAO.getUser(vo);
 		if (user != null) {
 			session.setAttribute("userName", user.getName());
-			return "getBoardList.do";
+			return "redirect:/getBoardList.do";
 		} else
-			System.out.println("회원이없습니다."); return "login.jsp";
+			System.out.println("회원이없습니다."); return "login";
 	}
 	
 }

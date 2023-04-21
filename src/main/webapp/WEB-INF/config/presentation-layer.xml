@@ -55,4 +55,19 @@
 	</mvc:interceptors>
 	
 	
+	
+	  <!-- Tiles configuration -->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>classpath:tiles/*.xml</value>
+            </list>
+        </property>
+    </bean>
+	
+	<!-- View resolver -->
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+    </bean>
+	
 </beans>

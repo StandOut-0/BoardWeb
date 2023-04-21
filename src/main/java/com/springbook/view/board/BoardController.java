@@ -36,10 +36,13 @@ public class BoardController {
 		return boardList;
 	}
 	
+	@RequestMapping(value = "/newBoard.do")
+	public String newBoard(BoardVO vo) throws IOException{
+		return "insertBoard";
+	}
 	
 	
 	//컨트롤러에서 DAO메소드를 호출하면 안되는 이유는 유지보수 과정에서 DAO클래스를 다른클래스로 쉽게 교체하기 위해서다.
-	
 	// 글 등록
 	@RequestMapping(value = "/insertBoard.do")
 	public String insertBoard(BoardVO vo) throws IOException{
@@ -47,34 +50,39 @@ public class BoardController {
 		// MultipartFile 객체가 제공하는 세개의 메소드
 		//getUploadFile, getOriginalFilename, transferTo만 이용하면 간단하게 파일업로드를 처리할 수 있다.
 		MultipartFile uploadFile = vo.getUploadFile();
+		int boardNum = vo.getSeq();
+		
 		if(!uploadFile.isEmpty()){
 			String fileName = uploadFile.getOriginalFilename();
-			uploadFile.transferTo(new File("D:/" + fileName));
+			File file = new File("D:/board/" + boardNum);
+			if (!file.exists()) {file.mkdir();}
+			uploadFile.transferTo(new File(file,fileName));
 		}
 		
 		boardService.insertBoard(vo);
-		return "getBoardList.do";
+		return "redirect:/getBoardList.do";
 	}
 
 	// 글 수정
 	@RequestMapping("/updateBoard.do")
 	public String updateBoard(@ModelAttribute("board") BoardVO vo) {			
 		boardService.updateBoard(vo);
-		return "getBoardList.do";
+		return "redirect:/getBoardList.do";
 	}
 
 	// 글 삭제
 	@RequestMapping("/deleteBoard.do")
 	public String deleteBoard(BoardVO vo) {
 		boardService.deleteBoard(vo);
-		return "getBoardList.do";
+		System.out.println("삭제를 완료했습니다.");
+		return "redirect:/getBoardList.do";
 	}
 
 	// 글 상세 조회
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, Model model) {
 		model.addAttribute("board", boardService.getBoard(vo)); // Model 정보 저장
-		return "getBoard.jsp"; // View 이름 리턴
+		return "getBoard"; // View 이름 리턴
 	}
 	
 	// 검색 조건 목록 설정
@@ -92,8 +100,10 @@ public class BoardController {
 			// Null Check
 			if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
 			if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+			
+			System.out.println(vo.getSearchKeyword());
 			// Model 정보 저장
 			model.addAttribute("boardList", boardService.getBoardList(vo));																
-			return "getBoardList.jsp"; // View 이름 리턴
+			return "getBoardList"; // View 이름 리턴
 		}
 }
