@@ -44,6 +44,14 @@
 		]]>
 	</delete>
 
+	<update id="sqlPlus">
+		<![CDATA[
+		UPDATE BOARD SET
+		cnt = #{cnt}+1
+		WHERE SEQ = #{seq}
+		]]>
+	</update>
+
 	<select id="getBoard" resultType="board">
 		<![CDATA[
 		SELECT *

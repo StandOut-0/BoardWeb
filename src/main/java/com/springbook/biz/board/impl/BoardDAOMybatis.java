@@ -31,6 +31,8 @@ public class BoardDAOMybatis{
 
 	public BoardVO getBoard(BoardVO vo) {
 		System.out.println("===> Mybatis로 getBoard() 기능 처리");
+		mybatis.update("BoardDAO.sqlPlus", vo);
+		System.out.println("cnt +1 추가");
 		return (BoardVO) mybatis.selectOne("BoardDAO.getBoard", vo);
 	}
 
