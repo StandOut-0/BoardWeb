@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+:root{
+    --basic: #383838;
+    --mainColor: #5b9bd5;
+    --mainColor_active: #4b88c2;
+}
+
+  a{color: var(--basic)}
+  .language_box{margin-top:-30px}
+  #container{border-top-right-radius: 0!important;}
+  table{vertical-align: text-top;}
+  .login .d-flex{width:350px; max-width:350px;}
+  
+  .btn-main, .bg-main, .border-main.active{background:var(--mainColor)!important; color:white!important}
+    .btn-main:hover, .btn-main:active, .btn-main:focus{background: var(--mainColor_active)!important;}

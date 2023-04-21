@@ -6,4 +6,4 @@
 <%request.setCharacterEncoding("UTF-8");%> 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
-<img src="${contextPath}/resources/img/logo.jpg" width="100"/>
+<img src="${contextPath}/resources/img/logo.jpg" width="120"/>
