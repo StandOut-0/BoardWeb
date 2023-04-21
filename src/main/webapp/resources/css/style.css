@@ -14,3 +14,4 @@
   
   .btn-main, .bg-main, .border-main.active{background:var(--mainColor)!important; color:white!important}
     .btn-main:hover, .btn-main:active, .btn-main:focus{background: var(--mainColor_active)!important;}
+    

@@ -45,7 +45,8 @@
 				<c:forEach items="${boardList }" var="board">
 					<tr>
 						<td>${board.seq }</td>
-						<td align="left"><a class="text-decoration-none" href="getBoard.do?seq=${board.seq }&cnt=${board.cnt}">${board.title }</a>
+						<td align="left">
+						<a class="text-decoration-none d-inline-block text-truncate" style="max-width: 150px;" href="getBoard.do?seq=${board.seq }&cnt=${board.cnt}">${board.title }</a>
 						</td>
 						<td>${board.writer }</td>
 						<td>${board.regDate }</td>
