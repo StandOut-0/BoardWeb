@@ -20,7 +20,10 @@
 		<tr>
 			<td class="bg-light"><spring:message
 					code='message.board.list.table.head.writer' /></td>
-			<td align="left"><span class="small">${board.writer }</span></td>
+			<td align="left">
+			<input class="form-control form-control-sm" value="${userName }" readonly
+				type="text" name="writer" />
+			</td>
 		</tr>
 		<tr>
 			<td class="bg-light"><spring:message
