@@ -4,7 +4,9 @@
 
 
 			<p class="text-end">
-				<b class="me-2 small">${userName }</b><a href="logout.do" class="btn btn-sm btn-danger">Log-out</a>
+				<b class="me-2 small">${userName }</b><a href="logout.do" class="btn btn-sm btn-danger">
+				<spring:message code='message.user.login.logOutBtn' />
+				</a>
 			</p>
 
 			</h3>
@@ -12,10 +14,18 @@
 			<!-- 검색 시작 -->
 			<form action="getBoardList.do" method="post">
 				<div class="d-flex mb-3">
-					<select name="searchCondition" class="form-select rounded-0 rounded-start" style="width:100px">
-						<c:forEach items="${conditionMap }" var="option">
+					<select name="searchCondition" class="form-select rounded-0 rounded-start small" style="width:130px">
+					
+					<option value="TITLE" class="small">
+					<spring:message code='message.board.list.search.condition.title' /></option>
+					
+					<option value="CONTENT" class="small">
+					<spring:message code='message.board.list.search.condition.content' /></option>
+					 
+						<%--  <c:forEach items="${conditionMap }" var="option">
 							<option value="${option.value }">${option.key }
-						</c:forEach>
+						</c:forEach> --%>
+						
 					</select>
 					<input class="form-control rounded-0" name="searchKeyword" type="text" />
 					<input class="btn btn-main rounded-0 rounded-end" type="submit"
@@ -56,7 +66,7 @@
 			</table>
 			<br>
 			<div class="d-grid gap-2">
-				<a href="newBoard.do" class="btn btn-main">
+				<a href="newBoard.do" class="btn btn-main btn-lg">
 					<spring:message code="message.board.list.link.insertBoard" />
 				</a>
 			</div>

@@ -24,7 +24,7 @@ public class LoginController {
 	public String login(UserVO vo, UserDAO userDAO, HttpSession session) {
 		//예외화면 클라이언트에게 제공하기
 		if (vo.getId() == null || vo.getId().equals("")) {
-			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+			return "login";
 		}
 		
 		UserVO user = userDAO.getUser(vo);

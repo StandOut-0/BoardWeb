@@ -5,12 +5,12 @@
 		<div class="login text-center">
 			<form action="login.do" method="post">
 
-				<div class="d-flex flex-column m-auto">
-					<div class="d-flex mb-2">
+				<div class="d-flex flex-column m-auto w-100">
+					<div class="d-flex mb-2 w-100">
 						<div class="small" style="width: 150px;"><spring:message code="message.user.login.id" /></div>
 						<input class="form-control form-control-sm" type="text" name="id" value="${user.id }" />
 					</div>
-					<div class="d-flex">
+					<div class="d-flex w-100">
 						<div class="small" style="width: 150px;"><spring:message code="message.user.login.password" /></div>
 						<input class="form-control form-control-sm" type="password" name="password" value="${user.password }" />
 					</div>
