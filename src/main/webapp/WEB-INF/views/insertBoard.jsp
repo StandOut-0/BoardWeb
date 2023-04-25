@@ -2,10 +2,16 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <p class="text-end">
-	<b class="me-2 small">${userName }</b><a href="logout.do"
-		class="btn btn-sm btn-danger"> <spring:message
-			code='message.user.login.logOutBtn' /></a>
+	<!-- 사용자명  -->
+	<b class="me-2 small">${userName }</b>
+
+	<!-- 로그아웃 버튼 -->
+	<a href="logout.do" class="btn btn-sm btn-danger"> <spring:message
+			code='message.user.login.logOutBtn' />
+	</a>
 </p>
+
+
 
 <!-- submit시 insertBoard_proc.jsp로  post 방식으로 값을 가지고 이동됨. -->
 <form action="insertBoard.do" method="post"
@@ -14,22 +20,38 @@
 		<tr>
 			<td class="bg-light" width="70"><spring:message
 					code='message.board.list.table.head.title' /></td>
-			<td align="left"><input class="form-control form-control-sm"
-				type="text" name="title" /></td>
+			<td align="left">
+			
+			<!-- 글제목 -->
+			<input class="form-control form-control-sm"
+				type="text" name="title" />
+			<!-- 글제목 -->
+				
+				</td>
 		</tr>
 		<tr>
 			<td class="bg-light"><spring:message
 					code='message.board.list.table.head.writer' /></td>
 			<td align="left">
+			
+			<!-- 작성자 readonly, 사용자이름으로 자동저장 -->
 			<input class="form-control form-control-sm" value="${userName }" readonly
 				type="text" name="writer" />
+			<!-- 작성자 readonly, 사용자이름으로 자동저장 -->
+				
 			</td>
 		</tr>
 		<tr>
 			<td class="bg-light"><spring:message
 					code='message.board.list.search.condition.content' /></td>
-			<td align="left"><textarea class="form-control form-control-sm"
-					name="content" cols="40" rows="10"></textarea></td>
+			<td align="left">
+			
+			<!-- 본문쓰기 -->
+			<textarea class="form-control form-control-sm"
+					name="content" cols="40" rows="10"></textarea>
+			<!-- 본문쓰기 -->
+					
+					</td>
 		</tr>
 		<tr>
 			<td class="bg-light" width="70"><spring:message
@@ -63,16 +85,27 @@
 	</table>
 
 	<div class="d-grid gap-2 notMatch">
+	
+	<!-- 새글쓰기 -->
 		<input type="submit"
 			value="<spring:message code='message.board.list.link.insertBoard' />"
 			class="btn btn-main " />
+		<!-- 새글쓰기 -->
+		
 	</div>
 </form>
 
-<!-- 단순한 페이지 이동 -->
+
+
+
+
 <div class="d-grid gap-2 notMatch">
+
+<!-- 글 목록 보기 -->
 	<a href="getBoardList.do" class="btn btn-light mt-2"><spring:message
 			code='message.board.list.mainTitle' /></a>
+<!-- 글 목록 보기 -->
+			
 </div>
 
 

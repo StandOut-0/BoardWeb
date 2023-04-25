@@ -4,39 +4,47 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
+	<!-- CharacterEncodingFilter 요청데이터의 문자 인코딩을 설정 -->
 	<filter>
+	<!-- 이 필터에 대한 이름을 정의합니다. -->
 		<filter-name>characterEncoding</filter-name>
+
+		<!-- 필터 클래스를 정의 -->
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		
+		<!-- 필터 초기화 파라미터를 정의 -->
 		<init-param>
 			<param-name>encoding</param-name>
-			
+
 			<!-- 한글검색시 깨지는 관계로 urf-8로 변경 -->
 			<!-- <param-value>EUC-KR</param-value> -->
 			<param-value>UTF-8</param-value>
-			
 		</init-param>
 	</filter>
 
+<!-- CharacterEncodingFilter와 url 패턴을 매핑하는 설정 코드 -->
 	<filter-mapping>
 		<filter-name>characterEncoding</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
-	
+
+
+<!-- applicationContext파일의 경로를 설정하는 코드 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
-	
+
+
+<!-- ContextLoaderListener를 사용하여 웹 어플리케이션이 시작될때 spring 컨테이너를 초기화, 설정한 빈 객체들을 생성하고 관리할 수 있게 해준다. -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
 
 	<!-- spring MVC 적용에서가장 먼저 해애할 일, DispatcherServlet class를 스프링 프레임 워크에서 제공하는 
-		DispatcherServlet으로 변경하기 
-		스프링 MVC 구성 요소중 DispatcherServlet 클래스가 유일한 서블릿.
-		반드시 HandlerMapping, Controller, ViewResolver 객체들과 상호 작용해야한다.
-		-->
+		DispatcherServlet으로 변경하기 스프링 MVC 구성 요소중 DispatcherServlet 클래스가 유일한 서블릿. 반드시 
+		HandlerMapping, Controller, ViewResolver 객체들과 상호 작용해야한다. -->
 	<servlet>
 		<servlet-name>action</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -46,6 +54,7 @@
 		</init-param>
 	</servlet>
 
+<!-- 웹 어플리케이션에서 *.do로 끝나는 url에 대해 action이라는 이름의 서블릿을 매핑하는 코드 -->
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>

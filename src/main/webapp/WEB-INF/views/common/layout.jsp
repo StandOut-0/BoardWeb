@@ -76,6 +76,8 @@
 
 
 <script>
+
+//언어 BTN STYLE지정
 const lanBox = document.querySelector(".lanBox");
 const lanE = document.querySelector(".lanE");
 const lanK = document.querySelector(".lanK");
@@ -93,6 +95,7 @@ if (url.pathname.includes("getBoard.do")) {
 		lanK.href = url.href + "&lang=ko";
 	}
 }
+
 </script>
 
 </html>

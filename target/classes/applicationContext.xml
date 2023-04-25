@@ -10,10 +10,11 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-
+	<!-- 지정된 패키지를 스캔하여 해당 패키지에 있는 클래스들을 자동으로 스프링 빈으로 등록 -->
 	<context:component-scan
 		base-package="com.springbook.biz" />
 
+	<!-- @Aspect 어노테이션이 붙은 클래스의 어드바이스르르 실행 할 수 있도록 자동생성 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<!-- DataSource 설정 -->
@@ -21,6 +22,10 @@
 	<context:property-placeholder
 		location="classpath:config/database.properties" />
 
+
+	<!-- 데이터 베이스 연결을 위해 사용되는 DatsSource -->
+	<!-- org.apache.commons.dbcp.BasicDataSource 클래스를 사용하여 dataSource 생성 -->
+	<!-- destroy-method="close" bean이 소명될때 실행될 메소드, close()메소드를 실행하여 종료함. -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}" />
@@ -84,6 +89,11 @@
 		</tx:attributes>
 	</tx:advice>
 
+
+	<!-- 트랜잭션을 관리하는 코드 -->
+	<!-- aop:config AOP 설정 -->
+	<!-- aop:pointcut 어드바이스를 적용할 대상 지정 -->
+	<!-- aop:advisor 포인트컷과 어드바이스를 연결 -->
 	<aop:config>
 		<aop:pointcut id="txPointcut"
 			expression="execution(* com.springbook.biz..*(..))" />

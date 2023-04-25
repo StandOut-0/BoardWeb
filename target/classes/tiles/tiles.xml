@@ -4,12 +4,16 @@
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
+
+	<!-- baseLayout 지정 -->
+	<!-- title과 bvody부분을 각 페이지에 맞게 custom. -->
    <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
+   <!-- baseLayout 지정 -->
 
    <definition name="login" extends="baseLayout">
       <put-attribute name="title" value="로그인" />
