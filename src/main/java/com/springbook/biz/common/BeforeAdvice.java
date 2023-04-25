@@ -5,14 +5,20 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Service;
 
-@Service
-@Aspect
+//AOP aspect-oriented programming
+//비즈니스 로직 메서드가 수행된 이후에 동작하는 사후처리를 구현
+
+@Service //서비스 빈으로 등록
+@Aspect //지므니스 로직 메서드를 가로채어 사후처리수행
 public class BeforeAdvice {
 	
+	//비즈니스 로직 메서드를 가로챌 지점을 정의
 //	@Pointcut("execution(* com.springbook.biz..*Impl.*(..))")
 //	public void allPointcut() {
 //	}
 //	
+	
+	//지정된 포인트컷에 해당하는 메서드 실행 전에 수행될 어드바이스를 정의
 //	@Before("allPointcut()")
 //	public void beforeLog(JoinPoint jp){
 //		String method = jp.getSignature().getName();

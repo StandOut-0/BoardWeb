@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.springbook.biz.board.BoardVO;
 
+
+//mybatis 이용하기
+
 @Repository
 public class BoardDAOMybatis{
 	

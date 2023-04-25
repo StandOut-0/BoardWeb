@@ -11,6 +11,8 @@ public class CollectionBean {
 //	private Map<String, String> addressList;
 	private Properties addressList;
 	
+	//Properties는 Hashtable클래스를 확장한것. 기존 키와 값을 저장하고 검색할 수 있는 데이터구조에 
+	//추가적으로 텍스트 파일로 저장하고 로드하는 기능을 제공한다.
 	
 	//	private Properties addressList;
 

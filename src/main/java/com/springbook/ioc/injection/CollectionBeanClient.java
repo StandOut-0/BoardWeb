@@ -31,6 +31,9 @@ public class CollectionBeanClient {
 //		System.out.println(addressList);
 		
 		for( String key : addressList.stringPropertyNames() ){
+			//Strinf.format 메서드
+			//포맷 문자열과 해당 문자열에 채워질 값들을 인자로 받아 문자열 반환
+			//포맷 문자열 %s
 			System.out.println(String.format("키 : %s, 값 : %s", key, addressList.get(key)) );
 		}
 		
