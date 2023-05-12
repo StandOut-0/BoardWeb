@@ -1,10 +1,9 @@
 # Sboard
 스터디용으로 사용되었던 BoardWeb에 기능을 추가하여 
-게시판을 구현했다.
+게시판을 구현했다.<br>
+https://tinyurl.com/2epcumgr
 
-
-
-<br><br>로그인과 로그아웃
+<br>로그인과 로그아웃
 
 [로그인과 로그아웃.webm](https://user-images.githubusercontent.com/120000929/233779172-57ac386a-46be-4de7-bb15-94458d32f76a.webm)
 
