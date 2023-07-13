@@ -1,7 +1,7 @@
 # Sboard
 스터디용으로 사용되었던 BoardWeb에 기능을 추가하여 
 게시판을 구현했다.<br>
-https://tinyurl.com/2epcumgr
+https://tinyurl.com/2epcumgr 
 
 <br>로그인과 로그아웃
 
